@@ -4,8 +4,9 @@ from os.path import join as pj
 from issues import Issue
 
 class IssueTracker(object):
-    def __init__(self, issue_directory):
+    def __init__(self, issue_directory, issue_list):
         self._dir = issue_directory
+        self.issue_list = issue_list
     
     def list_issues(self):
         pass
@@ -32,3 +33,9 @@ class IssueTracker(object):
         with open(issue_path, 'w+') as f:
             f.write(issue.serialize())
         return issue_path
+
+    def update_issues(self):
+        for issue in self.issue_list
+            filename = pj(self._dir, issue.number + '.issue')
+            with open(filename, 'w+') as f:
+                f.write(issue.serialize())

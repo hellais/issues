@@ -33,4 +33,4 @@ class GithubIssueList(issues.IssueList):
 
     def list(self):
         for issue in self.issues:
-            print issue.serialize()
+            yield issue.serialize()
