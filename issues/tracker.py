@@ -35,7 +35,7 @@ class IssueTracker(object):
         return issue_path
 
     def update_issues(self):
-        for issue in self.issue_list
+        for issue in self.issue_list:
             filename = pj(self._dir, issue.number + '.issue')
             with open(filename, 'w+') as f:
                 f.write(issue.serialize())
