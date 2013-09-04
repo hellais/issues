@@ -41,18 +41,19 @@ class Issue(object):
     def entry(self, content, serialize=False):
         if serialize:
             content = yaml.dump(content, default_flow_style=False)
+        content = content.replace('\r\n', '\n')
         output = u"---\n"
         output += content
-        output += u"\n...\n"
+        output += u"...\n"
         return output
 
     def serialize(self):
         output = self.entry(self.header, serialize=True)
-        output += self.entry(self.body)
+        output += self.entry(self.body + '\n')
 
         for comment in self.comments:
             output += self.entry(comment.header, serialize=True)
-            output += self.entry(comment.body)
+            output += self.entry(comment.body + '\n')
 
         return output
 

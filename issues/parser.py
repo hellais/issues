@@ -41,9 +41,9 @@ class IssueParser(object):
         started = False
 
         for line in self._fh:
-            if line.startswith('---'):
+            if line.strip() == '---':
                 started = True
-            elif started and line.startswith('...'):
+            elif started and line.strip() == '...':
                 yield document
                 started = False
                 document = ""

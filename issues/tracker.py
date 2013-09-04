@@ -39,5 +39,4 @@ class IssueTracker(object):
         for issue in self.issue_list.issues:
             filename = pj(self._dir, str(issue.number) + '.issue')
             with codecs.open(filename, 'w+', 'utf-8') as f:
-                x = issue.serialize()
-                f.write(x)
+                f.write(issue.serialize())
