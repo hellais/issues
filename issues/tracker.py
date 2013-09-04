@@ -1,4 +1,5 @@
 import os
+import codecs
 from os.path import join as pj
 
 from issues import Issue
@@ -35,7 +36,8 @@ class IssueTracker(object):
         return issue_path
 
     def update_issues(self):
-        for issue in self.issue_list:
-            filename = pj(self._dir, issue.number + '.issue')
-            with open(filename, 'w+') as f:
-                f.write(issue.serialize())
+        for issue in self.issue_list.issues:
+            filename = pj(self._dir, str(issue.number) + '.issue')
+            with codecs.open(filename, 'w+', 'utf-8') as f:
+                x = issue.serialize()
+                f.write(x)

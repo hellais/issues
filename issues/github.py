@@ -13,6 +13,7 @@ class GithubIssue(issues.Issue):
             self.milestone = issue.milestone.title
 
         self.title = issue.title
+        self.number = issue.number
         self.body = issue.body
         for comment in issue.iter_comments():
             self.comments.append(
